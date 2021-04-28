@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-// Vse zagolvki na home + chislo komentov
+// Все заголовки + коменты (недоделано)
 
 
 public class ChetvertoeZadanie {
@@ -35,11 +35,6 @@ public class ChetvertoeZadanie {
         }
     }
 
-изучить replace regular string
-
-    public void setReplace(изучить replace) {
-        this.replace = replace;
-    }
 }
 
 
