@@ -3,24 +3,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-//Zajti na pervuju statju u kotoroj estj komentarii (na moment kogda ja delal eto u pervoj statji nebilo comentov voobse)
-//Daze ikonki (tolko FB) po etomu sdelal po drugomu..
+//Зайти на последнюю статью нажать кнопку коментов, если коментов нету то отписать то что коментов нету.
 
 public class Firstcoment {
     private final By ACCEPT_COOKIE_BTN = By.xpath(".//button[@mode='primary']");
-    //private final By LAST_PUBLISHED_PRESS = By.xpath(".//span[@class='list-article__headline']");
-    // private final By PUBLICATION_COMMENTS = By.xpath(".//span[@class='article-share__item--count']");
-    private final By PUBLICATION_COMMENTS_MAIN = By.xpath(".//span[@class='list-article__comment section-font-color']");
-    // private final By PUBLICATION_COMMENTS_FB = By.xpath(".//span[@class='article-share__item--count']");
+    private final By LAST_PRESS = By.xpath(".//div[@class='list-article__image']");
+    private final By SHOW_COMMENTS = By.xpath("//*[@src='/v5/img/icons/comment-v2.svg']");
     @Test
-    public void firstTest() {
+    public void coment(){
         System.setProperty("webdriver.chrome.driver", "D://JAVA/Drivers/chromedriver.exe");
-        WebDriver browserWindow = new ChromeDriver();
-        browserWindow.manage().window().maximize();
-        browserWindow.get("http://tvnet.lv");
-        browserWindow.findElement(ACCEPT_COOKIE_BTN).click();
-        //browserWindow.findElement(LAST_PUBLISHED_PRESS).click();
-        browserWindow.findElement(PUBLICATION_COMMENTS_MAIN).click();
+        WebDriver check = new ChromeDriver();
+        check.manage().window().maximize();
+        check.get("http://tvnet.lv");
 
+        check.findElement(ACCEPT_COOKIE_BTN).click();
+        check.findElement(LAST_PRESS).click();
+
+        if(check.findElement(SHOW_COMMENTS)!= null){
+            check.findElement(SHOW_COMMENTS).click();
+        }else{
+            System.out.println("В данны момент раздела коментариев на последней статье нету!");
+        }
     }
 }
